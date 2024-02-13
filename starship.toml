@@ -1,0 +1,8 @@
+# Inserts a blank line between shell prompts
+add_newline = false
+# default 500. Too low for git submodules
+command_timeout = 2000
+
+# https://starship.rs/config/#character
+[character]
+vimcmd_symbol = '[❮](bold blue)'

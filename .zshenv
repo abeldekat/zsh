@@ -1,40 +1,10 @@
-typeset -U PATH path
-# Path
-
-# nmcli
-# nmcli device wifi lis
-# nmcli dev wifi rescan
-# sudo nmcli device wifi connect <name> --a
-
-    
-# local external programs
-if [ -d "$HOME/.local/bin" ] ; then
-    path=("$HOME/.local/bin" "$path[@]")
-fi
-# owns scripts
-if [ -d "$HOME/bin" ] ; then
-    path=("$HOME/bin/scripts/utils" "$HOME/bin/scripts/colors" "$path[@]")
-fi
-# cargo, in use of neovim, stylua
-if [ -d "$HOME/.cargo/bin" ] ; then
-    path=("$HOME/.cargo/bin" "$path[@]")
-fi
-# # pyenv, manage multiple python versions
-# # TODO: Documentation has this in .zprofile
-# export PYENV_ROOT="$HOME/.pyenv"
-# if [ -d "$PYENV_ROOT" ] ; then
-#     # TODO no bin in folder
-#     path=("$PYENV_ROOT/bin" "$path[@]")
-#     # This is the only requirement for pyenv to function properly. 
-#     # You can do this by hand by prepending $(pyenv root)/shims to your $PATH.
-#     eval "$(pyenv init --path)"
-# fi
-export PATH
-
 # Other XDG paths
 export XDG_DATA_HOME=${XDG_DATA_HOME:="$HOME/.local/share"}
 export XDG_CACHE_HOME=${XDG_CACHE_HOME:="$HOME/.cache"}
 export XDG_CONFIG_HOME=${XDG_CONFIG_HOME:="$HOME/.config"}
+
+# Starship prompt
+export STARSHIP_CONFIG="${XDG_CONFIG_HOME}/zsh/starship.toml"
 
 # TODO Disable files
 # export LESSHISTFILE=-
@@ -45,7 +15,7 @@ export XDG_CONFIG_HOME=${XDG_CONFIG_HOME:="$HOME/.config"}
 # Default Apps
 # TODO FILE=
 export EDITOR="nvim"
-# export READER="zathura"
+export READER="zathura"
 export VISUAL="nvim"
 export TERMINAL="alacritty"
 export BROWSER="firefox"

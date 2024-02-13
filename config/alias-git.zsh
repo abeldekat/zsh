@@ -1,3 +1,4 @@
+alias lg="lazygit"
 alias g="git"
 alias ga='git add'
 alias gaa='git add --all'
@@ -41,7 +42,20 @@ alias gros='git remote show'
 alias gsh='git show'
 
 # gs is ghostscript
-alias gst='git status'
 alias gt='git status'
 
 alias gwch='git whatchanged -p --abbrev-commit --pretty=medium'
+
+# worktree
+alias gw='git worktree'
+alias gwl='git worktree list'
+alias gwa='git worktree add'
+alias gwr='git worktree remove'
+
+# submodules
+alias gsm='git submodule'
+alias gsmi='git submodule init'
+# --name:
+alias gsma='git submodule add'
+alias gsmu='git submodule update --init --filter=blob:none --recursive'
+alias gsmU='git submodule update --remote --init --filter=blob:none'

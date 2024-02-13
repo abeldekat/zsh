@@ -1,9 +1,6 @@
 # Ranger loads both default and  custom rc
 export RANGER_LOAD_DEFAULT_RC=false
 
-# The printer, using cups
-export PRINTER_DESTINATION="Samsung_M283x_Series"
-
 # FZF
 export FZF_DEFAULT_COMMAND='rg --files --hidden'
 source /usr/share/fzf/key-bindings.zsh
@@ -24,7 +21,10 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh 2>/dev/null
 
 # A new cd command that helps you navigate faster by learning your habits.
-source /usr/share/z.lua/z.lua.plugin.zsh 2>/dev/null
+# source /usr/share/z.lua/z.lua.plugin.zsh 2>/dev/null
+# Testing zoxide from arch community
+# Completion: compinit must have been called
+eval "$(zoxide init zsh)"
 
 # zsh-completions is installed with arch
 # it adds completion files to existing system fpath /usr/share/zsh/site-functions
@@ -51,9 +51,3 @@ source /usr/share/z.lua/z.lua.plugin.zsh 2>/dev/null
 
 # n node version manager
 # export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"  # Added by n-install (see http://git.io/n-install-repo).
-
-# pyenv, manage multiple python versions
-# Installs autocompletion, optional
-# Rehashes shims, You can always run pyenv rehash manually.
-# Installs pyenv into the current shell as a shell function
-# eval "$(pyenv init -)"
