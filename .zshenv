@@ -45,3 +45,8 @@ export LESS_TERMCAP_us=$(tput smul; tput bold; tput setaf 1) # red
 export LESS_TERMCAP_ue=$(tput sgr0)
 # End bold, blinking, standout, underline
 export LESS_TERMCAP_me=$(tput sgr0)
+
+# pass enable local extensions
+export PASSWORD_STORE_ENABLE_EXTENSIONS=true
+
+. "$HOME/.cargo/env"

@@ -13,77 +13,80 @@
 # command -v nvim >/dev/null && alias vim="nvim" vimdiff="nvim -d"
 
 alias \
-	mkd="mkdir -pv" \
-	tree="tree -a" \
-	ccat="highlight --out-format=ansi" \
-	xb="xbacklight -get"
+  vs="touch vimreport.out && rm vimreport.out && nvim --startuptime vimreport.out" \
+  vsh='touch vimreport.out && rm vimreport.out && nvim --headless --startuptime vimreport.out -c "qall!"'
 
 alias \
-	sdn="sudo shutdown -h now" \
-	srn="sudo reboot now"
+  mkd="mkdir -pv" \
+  tree="tree -a" \
+  ccat="highlight --out-format=ansi" \
+  xb="xbacklight -get"
+
+alias \
+  sdn="sudo shutdown -h now" \
+  srn="sudo reboot now"
 
 alias \
   sw="sudo wg" \
   swl="sudo wg-quick up laptop" \
   swll="sudo wg-quick down laptop"
 
-# nvim default: using submodules
-# nviml: using lazy.nvim
-# nvimak: using nvim from github
-# nvimlazyvim: using the old lazyvim config
+# -- va: nvimak, github
 alias \
-	f="ranger" \
-	e="$EDITOR" \
-	vim="$EDITOR" \
-	vi="$EDITOR" \
-	v="$EDITOR" \
-  vl="AK_BOOT=lazy nvim" \
-  nviml="AK_BOOT=lazy NVIM_APPNAME=nviml nvim" \
-  nvimak="NVIM_APPNAME=nvimak nvim" \
-  nvimlazyvim="NVIM_APPNAME=nvimlazyvim nvim" \
-  mini="NVIM_APPNAME=mini nvim" \
+  f="yazi" \
+  e="$EDITOR" \
+  v="$EDITOR" \
+  vi="$EDITOR" \
+  vim="$EDITOR" \
+  va="NVIM_APPNAME=nvimak nvim" \
+  vo="NVIM_APPNAME=nvimold nvim" \
+  vec="NVIM_APPNAME=vec nvim" \
+  vmm="NVIM_APPNAME=nvim-minimax nvim" \
+  vnr="NVIM_APPNAME=nvim-repro nvim" \
+  vpk="NVIM_APPNAME=vpk nvim" \
+  vma="NVIM_APPNAME=vma nvim" \
+  repro="NVIM_APPNAME=repro nvim" \
   lazy="NVIM_APPNAME=lazy nvim" \
-  lazytest="NVIM_APPNAME=lazytest nvim" \
   kickstart="NVIM_APPNAME=kickstart nvim" \
   astro="NVIM_APPNAME=astro nvim" \
-
+  nvchad="NVIM_APPNAME=nvchad nvim"
 
 # arch
 alias \
-	p="sudo pacman"
+  p="sudo pacman"
 
 # systemctl
 alias \
-	sc="sudo systemctl" \
-	scs="sudo systemctl status" \
-	scus="systemctl --user status" \
-	scu="systemctl --user"
+  sc="sudo systemctl" \
+  scs="sudo systemctl status" \
+  scb="sudo systemctl start" \
+  sce="sudo systemctl stop" \
+  scu="systemctl --user" \
+  scus="systemctl --user status"
 
 alias \
-	dc="docker container" \
-	dcl="docker container ls" \
-	dv="docker volume" \
-	dvl="docker volume ls" \
-	dps="docker ps -a"
+  dc="docker container" \
+  dcl="docker container ls" \
+  dv="docker volume" \
+  dvl="docker volume ls" \
+  dps="docker ps -a"
 
 # tmux
-# ta='tmux attach -t' \
-# ts='tmux new-session -s' \
 alias \
   i='tmux-info' \
-	a='tmux-sessionize-dir' \
-	t='tmux list-sessions' \
-	ta='tmux attach -t' \
-	tw='tmux list-windows' \
+  a='tmux-sessionize-dir' \
+  t='tmux list-sessions' \
+  ta='tmux attach -t' \
+  tw='tmux list-windows' \
   tksv='tmux kill-server' \
-  tkse='tmux kill-session -t' \
+  tkse='tmux kill-session' \
   tkso='tmux kill-session -a' \
   tlp='tmux-tmuxp' \
-  tls='tmuxp ls' \
+  tls='tmuxp ls'
 
 # make st
 alias \
-  mkst="sudo make clean install" 
+  mkst="sudo make clean install"
 
 # # config files
 # alias \
@@ -91,14 +94,46 @@ alias \
 #   ezs='nvim ~/.config/zsh/.zshrc' \
 #   eal='nvim ~/.config/alacritty/alacritty.yml' \
 #   etm='nvim ~/.config/tmux/tmux.conf'
- 
+
 # other #######################################################################
 alias \
   ka="killall" \
   stop="kill -TSTP" \
   batt="cat /sys/class/power_supply/BAT?/capacity"
 
+# TODO Test this fragment from the ZSH book
+# pdf copy helper
+# alias %=' '
 
+# Load aliases and shortcuts if existent.
+# [ -f "$HOME/.config/shortcutrc" ] && source "$HOME/.config/shortcutrc"
+
+# TODO Examine trash
+alias trp='trash-put'
+alias tre='trash-empty'
+alias trl='trash-list'
+alias trr='trash-restore'
+alias trm='trash-rm'
+
+# buku bookmarks
+# buku -u 15012014 --url http://ddg.gg/ --tag web search, utilities -c Private search engine
+# update only comment:
+# buku -u 15012014 -c this is a new comment
+# delete only comment
+# buku -u 15012014 -c
+# --> buku -s: This is word based and any. -S is all
+# -c is comment, --title is title
+# --title without arg is no title
+# Search for bookmarks matching ALL of the tags kernel, debugging, general kernel concepts:
+# $ buku --stag kernel + debugging + general kernel concepts
+# --> a comma changes all into any
+# --> a '-' at the end: exclude list
+# show details of the last 10 bookmarks
+# $ buku -p -10
+# Append (or delete) tags 'tag 1', 'tag 2' to (or from) existing tags of bookmark at index 15012014:
+# $ buku -u 15012014 --tag + tag 1, tag 2
+# $ buku -u 15012014 --tag - tag 1, tag 2
+# Append, remove tags at prompt (taglist index to the left, bookmark index to the right): see doc
 alias b='buku --suggest'
 alias bn='buku --suggest --np'
 # add
